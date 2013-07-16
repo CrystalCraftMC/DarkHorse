@@ -1,0 +1,28 @@
+name: DarkHorse
+main: com.crystalcraftmc.darkhorse.Main
+version: 0.1b
+
+commands:
+   skeletonhorse:
+      description: Spawn a skeleton horse.
+      usage: /skeletonhorse
+      permission: darkhorse.skeleton
+      permission-message: You don't have <permission>
+   zombiehorse:
+      description: Spawn a zombie horse.
+      usage: /zombiehorse
+      permission: darkhorse.zombie
+      permission-message: You don't have <permission>
+
+permissions:
+    darkhorse.*:
+        description: Gives access to all DarkHorse commands.
+        children:
+            darkhorse.skeleton: true
+            darkhorse.zombie
+    darkhorse.skeleton:
+        description: Spawn a skeleton horse.
+        default: op
+    darkhorse.zombie:
+        description: Spawn a zombie horse.
+        default: op
