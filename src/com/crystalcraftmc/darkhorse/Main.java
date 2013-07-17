@@ -8,7 +8,7 @@ public final class Main extends JavaPlugin
     public void onEnable()
 	{
         // TODO Insert logic to be performed when the plugin is enabled
-		getLogger().info("PlayerLink has been enabled!");
+		getLogger().info("DarkHorse has been enabled!");
 		
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
 		getCommand("skeletonhorse").setExecutor(new Skeleton(this));
@@ -21,6 +21,6 @@ public final class Main extends JavaPlugin
     public void onDisable()
     {
         // TODO Insert logic to be performed when the plugin is disabled
-    	getLogger().info("PlayerLink has been disabled!");
+    	getLogger().info("DarkHorse has been disabled!");
     }
 }

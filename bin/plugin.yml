@@ -19,7 +19,7 @@ permissions:
         description: Gives access to all DarkHorse commands.
         children:
             darkhorse.skeleton: true
-            darkhorse.zombie
+            darkhorse.zombie: true
     darkhorse.skeleton:
         description: Spawn a skeleton horse.
         default: op
