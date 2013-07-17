@@ -1,6 +1,6 @@
 name: DarkHorse
 main: com.crystalcraftmc.darkhorse.Main
-version: 0.1b
+version: 1.0
 
 commands:
    skeletonhorse:
