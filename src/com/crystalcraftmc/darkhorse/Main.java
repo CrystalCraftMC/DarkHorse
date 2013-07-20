@@ -36,12 +36,9 @@ public final class Main extends JavaPlugin
         	@SuppressWarnings("unused")
 			Updater updater = new Updater(this, "darkhorse", this.getFile(), Updater.UpdateType.DEFAULT, true);
         }
-		
+        
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("skeletonhorse").setExecutor(new Skeleton(this));
-		
-		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("zombiehorse").setExecutor(new Zombie(this));
+		getCommand("spawnhorse").setExecutor(new Horse(this));
 	}
 	
     @Override
