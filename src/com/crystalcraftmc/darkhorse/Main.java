@@ -38,10 +38,16 @@ public final class Main extends JavaPlugin
         }
 		
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("skeletonhorse").setExecutor(new Skeleton(this));
+		getCommand("horse1").setExecutor(new Normal(this));
 		
 		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("zombiehorse").setExecutor(new Zombie(this));
+		getCommand("horse2").setExecutor(new Donkey(this));
+        
+		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
+		getCommand("horse3").setExecutor(new Skeleton(this));
+		
+		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
+		getCommand("horse4").setExecutor(new Zombie(this));
 	}
 	
     @Override
