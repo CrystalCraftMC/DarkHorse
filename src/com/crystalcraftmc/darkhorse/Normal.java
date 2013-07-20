@@ -44,10 +44,8 @@ public class Normal implements CommandExecutor
         		// If this has happened, the function will return true. 
         		return true;
     		}
-    		
     	}
     	// If this hasn't happened, a value of false will be returned.
     	return false;
 	}
-
 }

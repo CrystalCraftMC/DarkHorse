@@ -35,7 +35,7 @@ public class Donkey implements CommandExecutor
         		// ...then spawn a horse at the player's current location...
         		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
         		
-        		// ...and change the type of horse to a skeleton horse.
+        		// ...and change the type of horse to a donkey.
         		horse.setVariant(Variant.DONKEY);
         		
         		// Then, notify the player that the entity has been spawned.
@@ -48,5 +48,4 @@ public class Donkey implements CommandExecutor
     	// If this hasn't happened, a value of false will be returned.
     	return false;
 	}
-
 }

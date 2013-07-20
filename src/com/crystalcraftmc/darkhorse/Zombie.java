@@ -24,23 +24,26 @@ public class Zombie implements CommandExecutor
 		// Make the letter 'p' a variable for the command sender (or the player).
 		Player p = (Player) sender;
 		
-		// If the player typed /zombiehorse, then do the following...
-    	if (cmd.getName().equalsIgnoreCase("zombiehorse"))
+		// If the player typed /horse4, then do the following...
+    	if (cmd.getName().equalsIgnoreCase("horse4"))
     	{
-    		// ...create a variable to find the player's location...
-    		Location location = p.getLocation();
-    		
-    		// ...then spawn a horse at the player's current location...
-    		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
-    		
-    		// ...and change the type of horse to a zombie horse.
-    		horse.setVariant(Variant.UNDEAD_HORSE);
-    		
-    		// Then, notify the player that the entity has been spawned.
-    		p.sendMessage(ChatColor.GOLD + "Zombie horse has been spawned.");
-    		
-    		// If this has happened, the function will return true. 
-    		return true;
+    		if (p.hasPermission("darkhorse.zombie"))
+    		{
+    			// ...create a variable to find the player's location...
+        		Location location = p.getLocation();
+        		
+        		// ...then spawn a horse at the player's current location...
+        		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
+        		
+        		// ...and change the type of horse to a zombie horse.
+        		horse.setVariant(Variant.UNDEAD_HORSE);
+        		
+        		// Then, notify the player that the entity has been spawned.
+        		p.sendMessage(ChatColor.GOLD + "A zombie horse has been spawned.");
+        		
+        		// If this has happened, the function will return true. 
+        		return true;
+    		}
     	}
     	// If this hasn't happened, a value of false will be returned.
     	return false;
