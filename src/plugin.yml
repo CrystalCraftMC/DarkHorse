@@ -3,7 +3,7 @@ description: DarkHorse is a Bukkit plugin designed to let you spawn in all types
 author: jflory7
 website: http://dev.bukkit.org/bukkit-plugins/darkhorse/
 main: com.crystalcraftmc.darkhorse.Main
-version: 1.0
+version: 1.1
 
 commands:
    spawnhorse:
