@@ -1,29 +1,25 @@
 name: DarkHorse
-description: DarkHorse is a Bukkit plugin designed to let you spawn in all types of horses.
-author: jflory7
-website: http://dev.bukkit.org/bukkit-plugins/darkhorse/
 main: com.crystalcraftmc.darkhorse.Main
 version: 1.0
 
 commands:
-   spawnhorse:
-      description: Spawn a horse variant.
-      usage: /spawnhorse <normal, donkey, skeleton, zombie>
+   skeletonhorse:
+      description: Spawn a skeleton horse.
+      usage: /skeletonhorse
+      permission: darkhorse.skeleton
+      permission-message: You don't have <permission>
+   zombiehorse:
+      description: Spawn a zombie horse.
+      usage: /zombiehorse
+      permission: darkhorse.zombie
+      permission-message: You don't have <permission>
 
 permissions:
     darkhorse.*:
         description: Gives access to all DarkHorse commands.
         children:
-            darkhorse.normal: true
-            darkhorse.donkey: true
             darkhorse.skeleton: true
             darkhorse.zombie: true
-    darkhorse.normal:
-        description: Spawn a normal horse.
-        default: op
-    darkhorse.donkey:
-        description: Spawn a donkey.
-        default: op
     darkhorse.skeleton:
         description: Spawn a skeleton horse.
         default: op
