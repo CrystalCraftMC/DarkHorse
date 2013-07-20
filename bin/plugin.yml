@@ -9,21 +9,25 @@ commands:
    horse1:
       description: Spawn a normal horse.
       usage: /horse1
+      aliases: [normalhorse, horsenormal, spawnhorse1, sh1]
       permission: darkhorse.normal
       permission-message: You don't have <permission>
    horse2:
       description: Spawn a donkey.
       usage: /horse2
+      aliases: [donkey, spawndonkey, spawnhorse2, sh2]
       permission: darkhorse.donkey
       permission-message: You don't have <permission>
    horse3:
       description: Spawn a skeleton horse.
       usage: /horse3
+      aliases: [skeletonhorse, horseskeleton, spawnhorse3, sh3]
       permission: darkhorse.skeleton
       permission-message: You don't have <permission>
    horse4:
       description: Spawn a zombie horse.
       usage: /horse4
+      aliases: [zombiehorse, horsezombie, spawnhorse4, sh4]
       permission: darkhorse.zombie
       permission-message: You don't have <permission>
 
