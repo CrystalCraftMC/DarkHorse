@@ -36,7 +36,7 @@ public class Horse implements CommandExecutor
 	    		if(p.hasPermission("darkhorse.normal"))
 	    		{
 	        		// ...create a variable to find the player's location...
-	        		Location location = p.getLocation();
+	        		Location location = p.getEyeLocation();
 	        		
 	        		// ...then spawn a horse at the player's current location...
 	        		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
@@ -58,7 +58,7 @@ public class Horse implements CommandExecutor
 	    		if(p.hasPermission("darkhorse.donkey"))
 	    		{
 	        		// ...create a variable to find the player's location...
-	        		Location location = p.getLocation();
+	        		Location location = p.getEyeLocation();
 	        		
 	        		// ...then spawn a horse at the player's current location...
 	        		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
@@ -80,7 +80,7 @@ public class Horse implements CommandExecutor
 	    		if(p.hasPermission("darkhorse.skeleton"))
 	    		{
 	        		// ...create a variable to find the player's location...
-	        		Location location = p.getLocation();
+	        		Location location = p.getEyeLocation();
 	        		
 	        		// ...then spawn a horse at the player's current location...
 	        		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
@@ -102,7 +102,7 @@ public class Horse implements CommandExecutor
 	    		if(p.hasPermission("darkhorse.zombie"))
 	    		{
 	        		// ...create a variable to find the player's location...
-	        		Location location = p.getLocation();
+	        		Location location = p.getEyeLocation();
 	        		
 	        		// ...then spawn a horse at the player's current location...
 	        		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
