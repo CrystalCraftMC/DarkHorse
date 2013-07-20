@@ -57,7 +57,7 @@ public class Horse implements CommandExecutor
 	        	}
 	        }
 	        
-	        else if(args[0].equalsIgnoreCase("donkey"))
+	        else if(args[1].equalsIgnoreCase("donkey"))
 	        {
 	        	// If the sender of the command has this permission...
 	    		if(p.hasPermission("darkhorse.donkey"))
@@ -79,7 +79,7 @@ public class Horse implements CommandExecutor
 	        	}
 	        }
 	        
-	        else if(args[0].equalsIgnoreCase("skeleton"))
+	        else if(args[2].equalsIgnoreCase("skeleton"))
 	        {
 	        	// If the sender of the command has this permission...
 	    		if(p.hasPermission("darkhorse.skeleton"))
@@ -101,7 +101,7 @@ public class Horse implements CommandExecutor
 	        	}
 	        }
 	        
-	        else if(args[0].equalsIgnoreCase("zombie"))
+	        else if(args[3].equalsIgnoreCase("zombie"))
 	        {
 	        	// If the sender of the command has this permission...
 	    		if(p.hasPermission("darkhorse.zombie"))
