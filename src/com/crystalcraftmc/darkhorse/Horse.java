@@ -17,11 +17,6 @@ public class Horse implements CommandExecutor
 		this.plugin = plugin;
 	}
 	
-	private void setVariant(Variant horse)
-	{
-		// TODO Auto-generated method stub
-	}
-	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	{
@@ -47,7 +42,7 @@ public class Horse implements CommandExecutor
 	        		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
 	        		
 	        		// ...and change the type of horse to a normal horse.
-	        		horse.setVariant(Variant.HORSE);
+	        		((org.bukkit.entity.Horse) horse).setVariant(Variant.HORSE);
 	        		
 	        		// Then, notify the player that the entity has been spawned.
 	        		p.sendMessage(ChatColor.GOLD + "A normal horse has been spawned.");
@@ -69,7 +64,7 @@ public class Horse implements CommandExecutor
 	        		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
 	        		
 	        		// ...and change the type of horse to a donkey.
-	        		horse.setVariant(Variant.DONKEY);
+	        		((org.bukkit.entity.Horse) horse).setVariant(Variant.DONKEY);
 	        		
 	        		// Then, notify the player that the entity has been spawned.
 	        		p.sendMessage(ChatColor.GOLD + "A donkey has been spawned.");
@@ -91,7 +86,7 @@ public class Horse implements CommandExecutor
 	        		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
 	        		
 	        		// ...and change the type of horse to a skeleton horse.
-	        		horse.setVariant(Variant.SKELETON_HORSE);
+	        		((org.bukkit.entity.Horse) horse).setVariant(Variant.SKELETON_HORSE);
 	        		
 	        		// Then, notify the player that the entity has been spawned.
 	        		p.sendMessage(ChatColor.GOLD + "A skeleton horse has been spawned.");
@@ -113,7 +108,7 @@ public class Horse implements CommandExecutor
 	        		Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
 	        		
 	        		// ...and change the type of horse to a zombie horse.
-	        		horse.setVariant(Variant.UNDEAD_HORSE);
+	        		((org.bukkit.entity.Horse) horse).setVariant(Variant.UNDEAD_HORSE);
 	        		
 	        		// Then, notify the player that the entity has been spawned.
 	        		p.sendMessage(ChatColor.GOLD + "A zombie horse has been spawned.");
