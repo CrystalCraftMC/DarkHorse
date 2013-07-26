@@ -40,7 +40,7 @@ public class Normal implements CommandExecutor
         		
         		// Then, notify the player that the entity has been spawned.
         		p.sendMessage(ChatColor.GOLD + "A normal horse has been spawned.");
-        		
+        		        		
         		// If this has happened, the function will return true. 
         		return true;
     		}
