@@ -8,15 +8,15 @@ version: 1.2
 commands:
    dh:
       description: Spawn a horse.
-      usage: /dh <normal, donkey, mule, skeleton, zombie> [tamed]
+      usage: /dh <horse, donkey, mule, skeleton, zombie> [tamed]
       aliases: [darkhorse, horse]
 
 permissions:
     darkhorse.*:
         description: Gives access to all DarkHorse commands.
         children:
-            darkhorse.normal: true
-            darkhorse.normal.tamed: true
+            darkhorse.horse: true
+            darkhorse.horse.tamed: true
             darkhorse.donkey: true
             darkhorse.donkey.tamed: true
             darkhorse.mule: true
@@ -26,10 +26,10 @@ permissions:
             darkhorse.zombie: true
             darkhorse.zombie.tamed: true
         default: op
-    darkhorse.normal:
+    darkhorse.horse:
         description: Spawn a normal horse.
         default: op
-    darkhorse.normal.tamed:
+    darkhorse.horse.tamed:
         description: Spawn a tamed normal horse.
         default: op
     darkhorse.donkey:
