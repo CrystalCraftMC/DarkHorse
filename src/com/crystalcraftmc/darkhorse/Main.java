@@ -1,7 +1,14 @@
 package com.crystalcraftmc.darkhorse;
 
 import java.io.IOException;
-
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Horse;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Horse.Variant;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin
@@ -36,18 +43,197 @@ public final class Main extends JavaPlugin
         	@SuppressWarnings("unused")
 			Updater updater = new Updater(this, "darkhorse", this.getFile(), Updater.UpdateType.DEFAULT, true);
         }
+	}
+	
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
+	{
+    	// Make the letter 'p' a variable for the command sender (or the player).
+		Player p = (Player) sender;
 		
-		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("horse1").setExecutor(new Normal(this));
-		
-		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("horse2").setExecutor(new Donkey(this));
-        
-		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("horse3").setExecutor(new Skeleton(this));
-		
-		// This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
-		getCommand("horse4").setExecutor(new Zombie(this));
+    	if (cmd.getName().equalsIgnoreCase("dh"))
+    	{
+    		if(args.length < 1)
+    		{
+    			return false;
+    		}
+    		
+    		else if(args[0].equalsIgnoreCase("normal"))
+            {
+                if (sender != null)
+                {
+                    sender.sendMessage("This command can only be run by a player.");
+                }
+                else
+                {
+                    if (p.hasPermission("darkhorse.normal"))
+                    {
+                        // ...create a variable to find the player's location...
+                        Location location = p.getLocation();
+
+                        // ...then spawn a horse at the player's current location...
+                        Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
+
+                        // ...and change the type of horse to a normal horse.
+                        horse.setVariant(Variant.HORSE);
+
+                        // Then, notify the player that the entity has been spawned.
+                        p.sendMessage(ChatColor.GOLD + "A normal horse has been spawned.");
+
+                        // If this has happened, the function will return true.
+                        return true;
+                    }
+    			}
+    			
+    			if(args[1].equalsIgnoreCase("tamed"))
+    			{
+                    if (sender != null)
+                    {
+                        sender.sendMessage("This command can only be run by a player.");
+                    }
+                    else
+                    {
+                        if (p.hasPermission("darkhorse.normal.tamed"))
+                        {
+                            // ...create a variable to find the player's location...
+                            Location location = p.getLocation();
+
+                            // ...then spawn a horse at the player's current location...
+                            Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
+
+                            // ...and change the type of horse to a normal horse...
+                            horse.setVariant(Variant.HORSE);
+
+                            // ...set the horse to the tamed state...
+                            horse.setTamed(true);
+
+                            // ...and set thw owner to be the player who ran the command.
+                            horse.setOwner(p);
+
+                            // Then, notify the player that the entity has been spawned.
+                            p.sendMessage(ChatColor.GOLD + "A tamed normal horse has been spawned.");
+
+                            // If this has happened, the function will returns true.
+                            return true;
+                        }
+                    }
+                }
+    		}
+    		
+    		else if(args[0].equalsIgnoreCase("donkey"))
+    		{
+                if (sender != null)
+                {
+                    sender.sendMessage("This command can only be run by a player.");
+                }
+                else
+                {
+                    if (p.hasPermission("darkhorse.donkey"))
+                    {
+                        // ...create a variable to find the player's location...
+                        Location location = p.getLocation();
+
+                        // ...then spawn a horse at the player's current location...
+                        Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
+
+                        // ...and change the type of horse to a donkey.
+                        horse.setVariant(Variant.DONKEY);
+
+                        // Then, notify the player that the entity has been spawned.
+                        p.sendMessage(ChatColor.GOLD + "A donkey has been spawned.");
+
+                        // If this has happened, the function will return true.
+                        return true;
+                    }
+                }
+    		}
+    		
+    		else if(args[0].equalsIgnoreCase("mule"))
+    		{
+                if (sender != null)
+                {
+                    sender.sendMessage("This command can only be run by a player.");
+                }
+                else
+                {
+                    if (p.hasPermission("darkhorse.mule"))
+                    {
+                        // ...create a variable to find the player's location...
+                        Location location = p.getLocation();
+
+                        // ...then spawn a horse at the player's current location...
+                        Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
+
+                        // ...and change the type of horse to a donkey.
+                        horse.setVariant(Variant.MULE);
+
+                        // Then, notify the player that the entity has been spawned.
+                        p.sendMessage(ChatColor.GOLD + "A mule has been spawned.");
+
+                        // If this has happened, the function will return true.
+                        return true;
+                    }
+                }
+    		}
+    		
+    		else if(args[0].equalsIgnoreCase("skeleton"))
+    		{
+                if (sender != null)
+                {
+                    sender.sendMessage("This command can only be run by a player.");
+                }
+                else
+                {
+                    if (p.hasPermission("darkhorse.skeleton"))
+                    {
+                        // ...create a variable to find the player's location...
+                        Location location = p.getLocation();
+
+                        // ...then spawn a horse at the player's current location...
+                        Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
+
+                        // ...and change the type of horse to a skeleton horse.
+                        horse.setVariant(Variant.SKELETON_HORSE);
+
+                        // Then, notify the player that the entity has been spawned.
+                        p.sendMessage(ChatColor.GOLD + "A skeleton horse has been spawned.");
+
+                        // If this has happened, the function will return true.
+                        return true;
+                    }
+                }
+    		}
+    		
+    		else if(args[0].equalsIgnoreCase("zombie"))
+    		{
+                if (sender != null)
+                {
+                    sender.sendMessage("This command can only be run by a player.");
+                }
+                else
+                {
+                    if (p.hasPermission("darkhorse.zombie"))
+                    {
+                        // ...create a variable to find the player's location...
+                        Location location = p.getLocation();
+
+                        // ...then spawn a horse at the player's current location...
+                        Horse horse = (Horse) location.getWorld().spawnEntity(location, EntityType.HORSE);
+
+                        // ...and change the type of horse to a zombie horse.
+                        horse.setVariant(Variant.UNDEAD_HORSE);
+
+                        // Then, notify the player that the entity has been spawned.
+                        p.sendMessage(ChatColor.GOLD + "A zombie horse has been spawned.");
+
+                        // If this has happened, the function will return true.
+                        return true;
+                    }
+                }
+    		}
+    	}
+    	// If this hasn't happened, a value of false will be returned.
+    	return false;
 	}
 	
     @Override
