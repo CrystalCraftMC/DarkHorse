@@ -67,7 +67,7 @@ public final class Main extends JavaPlugin
     		
     		else if(args[0].equalsIgnoreCase("horse"))
             {
-                if(args[1].equalsIgnoreCase("tamed"))
+                if (args.length == 2 && args[1].equalsIgnoreCase("tamed"))
                 {
                     if (p.hasPermission("darkhorse.horse.tamed"))
                     {
@@ -115,7 +115,7 @@ public final class Main extends JavaPlugin
     		
     		else if(args[0].equalsIgnoreCase("donkey"))
     		{
-                if(args[1].equalsIgnoreCase("tamed"))
+                if (args.length == 2 && args[1].equalsIgnoreCase("tamed"))
                 {
                     if (p.hasPermission("darkhorse.donkey.tamed"))
                     {
@@ -166,7 +166,7 @@ public final class Main extends JavaPlugin
     		
     		else if(args[0].equalsIgnoreCase("mule"))
     		{
-                if(args[1].equalsIgnoreCase("tamed"))
+                if (args.length == 2 && args[1].equalsIgnoreCase("tamed"))
                 {
                     if (p.hasPermission("darkhorse.mule.tamed"))
                     {
@@ -216,7 +216,7 @@ public final class Main extends JavaPlugin
     		
     		else if(args[0].equalsIgnoreCase("skeleton"))
     		{
-                if(args[1].equalsIgnoreCase("tamed"))
+                if (args.length == 2 && args[1].equalsIgnoreCase("tamed"))
                 {
                     if (p.hasPermission("darkhorse.skeleton.tamed"))
                     {
@@ -266,7 +266,7 @@ public final class Main extends JavaPlugin
     		
     		else if(args[0].equalsIgnoreCase("zombie"))
     		{
-                if(args[1].equalsIgnoreCase("tamed"))
+                if (args.length == 2 && args[1].equalsIgnoreCase("tamed"))
                 {
                     if (p.hasPermission("darkhorse.zombie.tamed"))
                     {
