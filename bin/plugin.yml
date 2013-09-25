@@ -3,51 +3,56 @@ description: DarkHorse is a Bukkit plugin designed to let you spawn in all types
 author: jflory7
 website: http://dev.bukkit.org/bukkit-plugins/darkhorse/
 main: com.crystalcraftmc.darkhorse.Main
-version: 1.1
+version: 1.2
 
 commands:
-   horse1:
-      description: Spawn a normal horse.
-      usage: /horse1
-      aliases: [normalhorse, horsenormal, spawnhorse1, sh1]
-      permission: darkhorse.normal
-      permission-message: You don't have <permission>
-   horse2:
-      description: Spawn a donkey.
-      usage: /horse2
-      aliases: [donkey, spawndonkey, spawnhorse2, sh2]
-      permission: darkhorse.donkey
-      permission-message: You don't have <permission>
-   horse3:
-      description: Spawn a skeleton horse.
-      usage: /horse3
-      aliases: [skeletonhorse, horseskeleton, spawnhorse3, sh3]
-      permission: darkhorse.skeleton
-      permission-message: You don't have <permission>
-   horse4:
-      description: Spawn a zombie horse.
-      usage: /horse4
-      aliases: [zombiehorse, horsezombie, spawnhorse4, sh4]
-      permission: darkhorse.zombie
-      permission-message: You don't have <permission>
+   dh:
+      description: Spawn a horse.
+      usage: /dh <horse, donkey, mule, skeleton, zombie> [tamed]
+      aliases: [darkhorse, horse]
 
 permissions:
     darkhorse.*:
         description: Gives access to all DarkHorse commands.
         children:
-            darkhorse.normal: true
+            darkhorse.horse: true
+            darkhorse.horse.tamed: true
             darkhorse.donkey: true
+            darkhorse.donkey.tamed: true
+            darkhorse.mule: true
+            darkhorse.mule.tamed: true
             darkhorse.skeleton: true
+            darkhorse.skeleton.tamed: true
             darkhorse.zombie: true
-    darkhorse.normal:
+            darkhorse.zombie.tamed: true
+        default: op
+    darkhorse.horse:
         description: Spawn a normal horse.
+        default: op
+    darkhorse.horse.tamed:
+        description: Spawn a tamed normal horse.
         default: op
     darkhorse.donkey:
         description: Spawn a donkey.
         default: op
+    darkhorse.donkey.tamed:
+        description: Spawn a tamed donkey.
+        default: op
+    darkhorse.mule:
+        description: Spawn a mule.
+        default: op
+    darkhorse.mule.tamed:
+        description: Spawn a tamed mule.
+        default: op
     darkhorse.skeleton:
         description: Spawn a skeleton horse.
         default: op
+    darkhorse.skeleton.tamed:
+        description: Spawn a tamed skeleton horse.
+        default: op
     darkhorse.zombie:
         description: Spawn a zombie horse.
+        default: op
+    darkhorse.zombie.tamed:
+        description: Spawn a tamed zombie horse.
         default: op
