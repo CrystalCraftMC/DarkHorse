@@ -40,7 +40,7 @@ public final class Main extends JavaPlugin
         if (this.getConfig().getBoolean("auto-update"))
         {
         	// ...and if so, run the auto-update class.
-        	@SuppressWarnings("UnusedAssignment")
+        	@SuppressWarnings({ "unused" })
 			Updater updater = new Updater(this, "darkhorse", this.getFile(), Updater.UpdateType.DEFAULT, true);
         }
 	}
