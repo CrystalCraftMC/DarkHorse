@@ -1,8 +1,10 @@
 package com.crystalcraftmc.darkhorse;
 
 import java.io.IOException;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
@@ -41,7 +43,7 @@ public final class Main extends JavaPlugin
         {
         	// ...and if so, run the auto-update class.
         	@SuppressWarnings({ "unused" })
-			Updater updater = new Updater(this, "darkhorse", this.getFile(), Updater.UpdateType.DEFAULT, true);
+        	Updater updater = new Updater(this, 61717, this.getFile(), Updater.UpdateType.DEFAULT, true);
         }
 	}
 	
@@ -232,8 +234,11 @@ public final class Main extends JavaPlugin
                         // ...set the horse to the tamed state...
                         horse.setTamed(true);
 
-                        // ...and set thw owner to be the player who ran the command.
+                        // ...and set the owner to be the player who ran the command.
                         horse.setOwner(p);
+                        
+                        // What does the horse say?
+                        p.playSound(location, Sound.HORSE_SKELETON_IDLE, 1, 1);
 
                         // Then, notify the player that the entity has been spawned.
                         p.sendMessage(ChatColor.GOLD + "A tamed skeleton horse has been spawned.");
@@ -254,6 +259,9 @@ public final class Main extends JavaPlugin
 
                         // ...and change the type of horse to a skeleton horse.
                         horse.setVariant(Variant.SKELETON_HORSE);
+                        
+                        // What does the horse say?
+                        p.playSound(location, Sound.HORSE_SKELETON_IDLE, 1, 1);
 
                         // Then, notify the player that the entity has been spawned.
                         p.sendMessage(ChatColor.GOLD + "A skeleton horse has been spawned.");
@@ -282,8 +290,11 @@ public final class Main extends JavaPlugin
                         // ...set the horse to the tamed state...
                         horse.setTamed(true);
 
-                        // ...and set thw owner to be the player who ran the command.
+                        // ...and set the owner to be the player who ran the command.
                         horse.setOwner(p);
+                        
+                        // What does the horse say?
+                        p.playSound(location, Sound.HORSE_ZOMBIE_IDLE, 1, 1);
 
                         // Then, notify the player that the entity has been spawned.
                         p.sendMessage(ChatColor.GOLD + "A tamed zombie horse has been spawned.");
@@ -304,6 +315,9 @@ public final class Main extends JavaPlugin
 
                         // ...and change the type of horse to a zombie horse.
                         horse.setVariant(Variant.UNDEAD_HORSE);
+                        
+                        // What does the horse say?
+                        p.playSound(location, Sound.HORSE_ZOMBIE_IDLE, 1, 1);
 
                         // Then, notify the player that the entity has been spawned.
                         p.sendMessage(ChatColor.GOLD + "A zombie horse has been spawned.");
