@@ -1,4 +1,4 @@
-package com.crystalcraftmc.darkhorse;
+package co.j_f.darkhorse;
 
 import java.io.IOException;
 
