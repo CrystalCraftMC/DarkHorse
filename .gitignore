@@ -4,6 +4,7 @@
 /.DS_Store
 /.classpath
 /.idea
+/target
 /out
 /Darkhorse.eml
 /Darkhorse.iml
