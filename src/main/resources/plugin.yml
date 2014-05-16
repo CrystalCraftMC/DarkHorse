@@ -2,7 +2,7 @@ name: DarkHorse
 description: DarkHorse is a Bukkit plugin designed to let you spawn in all types of horses.
 author: jflory7
 website: http://dev.bukkit.org/bukkit-plugins/darkhorse/
-main: co.j_f.darkhorse.DarkHorse
+main: com.justinwflory.darkhorse.DarkHorse
 version: ${project.version}
 
 commands:
