@@ -26,7 +26,7 @@
     <groupId>com.justinwflory.darkhorse.DarkHorse</groupId>
     <artifactId>DarkHorse</artifactId>
     <packaging>jar</packaging>
-    <version>1.2.3</version>
+    <version>1.3</version>
     <name>DarkHorse</name>
     <url>http://dev.bukkit.org/bukkit-plugins/darkhorse/</url>
     <properties>
