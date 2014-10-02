@@ -1,10 +1,31 @@
+/*
+ * Copyright (c) 2014, Justin W. Flory
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 package com.justinwflory.darkhorse;
 
 import java.io.IOException;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Horse;
@@ -16,26 +37,22 @@ public class DarkHorse extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("DarkHorse v1.2.2 has been enabled!");
-        
-        // Link plugin with online stats.
+        getLogger().info("DarkHorse v1.2.3 has been enabled!");
+
+        // Link plugin with metrics.
         try {
             Metrics metrics = new Metrics(this);
             metrics.start();
-        } catch (IOException e){
+        } catch (IOException e) {
             // Failed to submit the stats :-(
         }
-        
-        // Generate the config.yml file...
+
+        // Generate the config.yml file and load defaults.
         saveDefaultConfig();
-        // ...load the configuration file and copy the defaults into the plugin...
         getConfig().options().copyDefaults(true);
-        // ...and save the configuration file.
         saveConfig();
 
-        // ...see if the config file allows auto-updating...
         if (getConfig().getBoolean("auto-update")) {
-            // ...and if so, run the auto-update class.
             @SuppressWarnings({ "unused" })
             Updater updater = new Updater(this, 61717, getFile(), Updater.UpdateType.DEFAULT, true);
         }
@@ -46,6 +63,23 @@ public class DarkHorse extends JavaPlugin {
         getLogger().info("DarkHorse v1.2.2 has been disabled!");
     }
 
+    private void spawnHorse(Player player, Variant variant, boolean tamed, boolean chest) {
+        Location location = player.getLocation();
+        Horse horse = location.getWorld().spawn(location, Horse.class);
+        horse.setVariant(variant);
+        if (tamed) {
+            horse.setTamed(true);
+            horse.setOwner(player);
+        }
+        if (chest) {
+            horse.setCarryingChest(true);
+        }
+    }
+
+    private void notify(Player player) {
+        player.sendMessage(ChatColor.GOLD + "Say hello to your new friend!");
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("dh")) {
@@ -53,104 +87,114 @@ public class DarkHorse extends JavaPlugin {
                 sender.sendMessage("This command can only be run by a player.");
                 return false;
             }
-            // Make the letter 'p' a variable for the command sender (or the player).
+
             Player p = (Player) sender;
+
             if (args.length == 0) {
-                sender.sendMessage("/dh <type> [tamed]");
+                sender.sendMessage(ChatColor.RED + "/dh <horse type> [tamed] [chest]");
                 return false;
             } else {
-                if(args[0].equalsIgnoreCase("horse")) {
-                    if (args.length == 2 && args[1].equalsIgnoreCase("tamed")) {
-                        if (p.hasPermission("darkhorse.horse.tamed")) {
-                            spawnHorse(p, Variant.HORSE, true);
-                            p.sendMessage(ChatColor.GOLD + "A tamed horse has been spawned.");
-                            return true;
-                        }
+                if (args.length == 3 && args[1].equalsIgnoreCase("tamed") && args[2].equalsIgnoreCase("chest")) {
+                    if (args[0].equalsIgnoreCase("horse") && p.hasPermission("darkhorse.horse")) {
+                        spawnHorse(p, Variant.HORSE, true, true);
+                        notify(p);
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("donkey") && p.hasPermission("darkhorse.donkey")) {
+                        spawnHorse(p, Variant.DONKEY, true, true);
+                        notify(p);
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("mule") && p.hasPermission("darkhorse.mule")) {
+                        spawnHorse(p, Variant.DONKEY, true, true);
+                        notify(p);
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("skeleton") && p.hasPermission("darkhorse.skeleton")) {
+                        spawnHorse(p, Variant.SKELETON_HORSE, true, true);
+                        notify(p);
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("zombie") && p.hasPermission("darkhorse.zombie")) {
+                        spawnHorse(p, Variant.UNDEAD_HORSE, true, true);
+                        notify(p);
+                        return true;
                     } else {
-                        if (p.hasPermission("darkhorse.horse")) {
-                            spawnHorse(p, Variant.HORSE, false);
-                            p.sendMessage(ChatColor.GOLD + "A horse has been spawned.");
+                        return false;
+                    }
+                } else if (args.length == 2) {
+                    if (args[1].equalsIgnoreCase("tamed")) {
+                        if (args[0].equalsIgnoreCase("horse") && p.hasPermission("darkhorse.horse")) {
+                            spawnHorse(p, Variant.HORSE, true, false);
+                            notify(p);
                             return true;
+                        } else if (args[0].equalsIgnoreCase("donkey") && p.hasPermission("darkhorse.donkey")) {
+                            spawnHorse(p, Variant.DONKEY, true, false);
+                            notify(p);
+                            return true;
+                        } else if (args[0].equalsIgnoreCase("mule") && p.hasPermission("darkhorse.mule")) {
+                            spawnHorse(p, Variant.MULE, true, false);
+                            notify(p);
+                            return true;
+                        } else if (args[0].equalsIgnoreCase("skeleton") && p.hasPermission("darkhorse.skeleton")) {
+                            spawnHorse(p, Variant.SKELETON_HORSE, true, false);
+                            notify(p);
+                            return true;
+                        } else if (args[0].equalsIgnoreCase("zombie") && p.hasPermission("darkhorse.zombie")) {
+                            spawnHorse(p, Variant.UNDEAD_HORSE, true, false);
+                            notify(p);
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else if (args[1].equalsIgnoreCase("chest")) {
+                        if (args[0].equalsIgnoreCase("horse") && p.hasPermission("darkhorse.horse")) {
+                            spawnHorse(p, Variant.HORSE, false, true);
+                            notify(p);
+                            return true;
+                        } else if (args[0].equalsIgnoreCase("donkey") && p.hasPermission("darkhorse.donkey")) {
+                            spawnHorse(p, Variant.DONKEY, false, true);
+                            notify(p);
+                            return true;
+                        } else if (args[0].equalsIgnoreCase("mule") && p.hasPermission("darkhorse.mule")) {
+                            spawnHorse(p, Variant.MULE, false, true);
+                            notify(p);
+                            return true;
+                        } else if (args[0].equalsIgnoreCase("skeleton") && p.hasPermission("darkhorse.skeleton")) {
+                            spawnHorse(p, Variant.SKELETON_HORSE, false, true);
+                            notify(p);
+                            return true;
+                        } else if (args[0].equalsIgnoreCase("zombie") && p.hasPermission("darkhorse.zombie")) {
+                            spawnHorse(p, Variant.UNDEAD_HORSE, false, true);
+                            notify(p);
+                            return true;
+                        } else {
+                            return false;
                         }
                     }
-                } else if(args[0].equalsIgnoreCase("donkey")) {
-                    if (args.length == 2 && args[1].equalsIgnoreCase("tamed")) {
-                        if (p.hasPermission("darkhorse.donkey.tamed")) {
-                            spawnHorse(p, Variant.DONKEY, true);
-                            p.sendMessage(ChatColor.GOLD + "A tamed donkey has been spawned.");
-                            return true;
-                        }
+                } else if (args.length == 1) {
+                    if (args[0].equalsIgnoreCase("horse") && p.hasPermission("darkhorse.horse")) {
+                        spawnHorse(p, Variant.HORSE, false, false);
+                        notify(p);
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("donkey") && p.hasPermission("darkhorse.donkey")) {
+                        spawnHorse(p, Variant.DONKEY, false, false);
+                        notify(p);
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("mule") && p.hasPermission("darkhorse.mule")) {
+                        spawnHorse(p, Variant.MULE, false, false);
+                        notify(p);
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("skeleton") && p.hasPermission("darkhorse.skeleton")) {
+                        spawnHorse(p, Variant.SKELETON_HORSE, false, false);
+                        notify(p);
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("zombie") && p.hasPermission("darkhorse.zombie")) {
+                        spawnHorse(p, Variant.UNDEAD_HORSE, false, false);
+                        notify(p);
+                        return true;
                     } else {
-                        if (p.hasPermission("darkhorse.donkey")) {
-                            spawnHorse(p, Variant.DONKEY, false);
-                            p.sendMessage(ChatColor.GOLD + "A donkey has been spawned.");
-                            return true;
-                        }
-                    }
-                } else if(args[0].equalsIgnoreCase("mule")) {
-                    if (args.length == 2 && args[1].equalsIgnoreCase("tamed")) {
-                        if (p.hasPermission("darkhorse.mule.tamed")) {
-                            spawnHorse(p, Variant.MULE, true);
-                            p.sendMessage(ChatColor.GOLD + "A tamed mule has been spawned.");
-                            return true;
-                        }
-                    } else {
-                        if (p.hasPermission("darkhorse.mule")) {
-                            spawnHorse(p, Variant.MULE, false);
-                            p.sendMessage(ChatColor.GOLD + "A mule has been spawned.");
-                            return true;
-                        }
-                    }
-                } else if(args[0].equalsIgnoreCase("skeleton")) {
-                    if (args.length == 2 && args[1].equalsIgnoreCase("tamed")) {
-                        if (p.hasPermission("darkhorse.skeleton.tamed")) {
-                            spawnHorse(p, Variant.SKELETON_HORSE, true);
-                            p.playSound(p.getLocation(), Sound.HORSE_SKELETON_IDLE, 1, 1);
-                            p.sendMessage(ChatColor.GOLD + "A tamed skeleton horse has been spawned.");
-                            return true;
-                        }
-                    } else {
-                        if (p.hasPermission("darkhorse.skeleton")) {
-                            spawnHorse(p, Variant.SKELETON_HORSE, false);
-                            p.playSound(p.getLocation(), Sound.HORSE_SKELETON_IDLE, 1, 1);
-                            p.sendMessage(ChatColor.GOLD + "A skeleton horse has been spawned.");
-                            return true;
-                        }
-                    }
-                } else if(args[0].equalsIgnoreCase("zombie")) {
-                    if (args.length == 2 && args[1].equalsIgnoreCase("tamed")) {
-                        if (p.hasPermission("darkhorse.zombie.tamed")) {
-                            spawnHorse(p, Variant.UNDEAD_HORSE, true);
-                            p.playSound(p.getLocation(), Sound.HORSE_ZOMBIE_IDLE, 1, 1);
-                            p.sendMessage(ChatColor.GOLD + "A tamed zombie horse has been spawned.");
-                            return true;
-                        }
-                    } else {
-                        if (p.hasPermission("darkhorse.zombie")) {
-                            spawnHorse(p, Variant.UNDEAD_HORSE, false);
-                            p.playSound(p.getLocation(), Sound.HORSE_ZOMBIE_IDLE, 1, 1);
-                            p.sendMessage(ChatColor.GOLD + "A zombie horse has been spawned.");
-                            return true;
-                        }
+                        return false;
                     }
                 }
             }
         }
         return false;
     }
-
-    private void spawnHorse(Player player, Variant variant, boolean tamed) {
-        // ...create a variable to find the player's location...
-        Location location = player.getLocation();
-        // ...then spawn a horse at the player's current location...
-        Horse horse = location.getWorld().spawn(location, Horse.class);
-        // ...and change the type of the horse
-        horse.setVariant(variant);
-        if(tamed) {
-            // ...and make it tamed if said so
-            horse.setTamed(true);
-            horse.setOwner(player);
-        }
-    }
-
 }

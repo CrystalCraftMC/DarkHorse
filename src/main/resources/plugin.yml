@@ -8,7 +8,7 @@ version: ${project.version}
 commands:
    dh:
       description: Spawn a horse.
-      usage: /dh <horse, donkey, mule, skeleton, zombie> [tamed]
+      usage: /dh <horse, donkey, mule, skeleton, zombie> [tamed] [chest]
       aliases: [darkhorse, horse]
 
 permissions:
@@ -16,43 +16,23 @@ permissions:
         description: Gives access to all DarkHorse commands.
         children:
             darkhorse.horse: true
-            darkhorse.horse.tamed: true
             darkhorse.donkey: true
-            darkhorse.donkey.tamed: true
             darkhorse.mule: true
-            darkhorse.mule.tamed: true
             darkhorse.skeleton: true
-            darkhorse.skeleton.tamed: true
             darkhorse.zombie: true
-            darkhorse.zombie.tamed: true
         default: op
     darkhorse.horse:
-        description: Spawn a normal horse.
-        default: op
-    darkhorse.horse.tamed:
-        description: Spawn a tamed normal horse.
+        description: Spawn all normal horses.
         default: op
     darkhorse.donkey:
-        description: Spawn a donkey.
-        default: op
-    darkhorse.donkey.tamed:
-        description: Spawn a tamed donkey.
+        description: Spawn all donkeys.
         default: op
     darkhorse.mule:
-        description: Spawn a mule.
-        default: op
-    darkhorse.mule.tamed:
-        description: Spawn a tamed mule.
+        description: Spawn all mules.
         default: op
     darkhorse.skeleton:
-        description: Spawn a skeleton horse.
-        default: op
-    darkhorse.skeleton.tamed:
-        description: Spawn a tamed skeleton horse.
+        description: Spawn all skeleton horses.
         default: op
     darkhorse.zombie:
-        description: Spawn a zombie horse.
-        default: op
-    darkhorse.zombie.tamed:
-        description: Spawn a tamed zombie horse.
+        description: Spawn all zombie horses.
         default: op
