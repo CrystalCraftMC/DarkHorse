@@ -164,10 +164,10 @@ public class DarkHorse extends JavaPlugin {
         return false;
     }
 
-    private void spawnHorse(Player player, Variant variant, boolean tamed, boolean chest) {
+    private void spawnHorse(Player player, Variant horseType, boolean tamed, boolean chest) {
         Location location = player.getLocation();
         Horse horse = location.getWorld().spawn(location, Horse.class);
-        horse.setVariant(variant);
+        horse.setVariant(horseType);
         if (tamed) {
             horse.setTamed(true);
             horse.setOwner(player);
@@ -175,10 +175,10 @@ public class DarkHorse extends JavaPlugin {
         if (chest) {
             horse.setCarryingChest(true);
         }
-        notify(player);
+        notifySpawn(player);
     }
 
-    private void notify(Player player) {
+    private void notifySpawn(Player player) {
         player.sendMessage(ChatColor.GOLD + "Say hello to your new friend!");
     }
 }
