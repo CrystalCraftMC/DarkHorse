@@ -3,22 +3,24 @@
  *
  * Copyright (c) 2014 Justin W. Flory
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 package com.justinwflory.darkhorse;
@@ -38,7 +40,7 @@ public class DarkHorse extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("DarkHorse v1.2.3 has been enabled!");
+        getLogger().info("DarkHorse v1.3 has been enabled!");
 
         // Link plugin with metrics.
         try {
@@ -61,11 +63,7 @@ public class DarkHorse extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("DarkHorse v1.2.2 has been disabled!");
-    }
-
-    private void notify(Player player) {
-        player.sendMessage(ChatColor.GOLD + "Say hello to your new friend!");
+        getLogger().info("DarkHorse v1.3 has been disabled!");
     }
 
     @Override
@@ -85,23 +83,18 @@ public class DarkHorse extends JavaPlugin {
                 if (args.length == 3 && args[1].equalsIgnoreCase("tamed") && args[2].equalsIgnoreCase("chest")) {
                     if (args[0].equalsIgnoreCase("horse") && p.hasPermission("darkhorse.horse")) {
                         spawnHorse(p, Variant.HORSE, true, true);
-                        notify(p);
                         return true;
                     } else if (args[0].equalsIgnoreCase("donkey") && p.hasPermission("darkhorse.donkey")) {
                         spawnHorse(p, Variant.DONKEY, true, true);
-                        notify(p);
                         return true;
                     } else if (args[0].equalsIgnoreCase("mule") && p.hasPermission("darkhorse.mule")) {
                         spawnHorse(p, Variant.DONKEY, true, true);
-                        notify(p);
                         return true;
                     } else if (args[0].equalsIgnoreCase("skeleton") && p.hasPermission("darkhorse.skeleton")) {
                         spawnHorse(p, Variant.SKELETON_HORSE, true, true);
-                        notify(p);
                         return true;
                     } else if (args[0].equalsIgnoreCase("zombie") && p.hasPermission("darkhorse.zombie")) {
                         spawnHorse(p, Variant.UNDEAD_HORSE, true, true);
-                        notify(p);
                         return true;
                     } else {
                         return false;
@@ -110,23 +103,18 @@ public class DarkHorse extends JavaPlugin {
                     if (args[1].equalsIgnoreCase("tamed")) {
                         if (args[0].equalsIgnoreCase("horse") && p.hasPermission("darkhorse.horse")) {
                             spawnHorse(p, Variant.HORSE, true, false);
-                            notify(p);
                             return true;
                         } else if (args[0].equalsIgnoreCase("donkey") && p.hasPermission("darkhorse.donkey")) {
                             spawnHorse(p, Variant.DONKEY, true, false);
-                            notify(p);
                             return true;
                         } else if (args[0].equalsIgnoreCase("mule") && p.hasPermission("darkhorse.mule")) {
                             spawnHorse(p, Variant.MULE, true, false);
-                            notify(p);
                             return true;
                         } else if (args[0].equalsIgnoreCase("skeleton") && p.hasPermission("darkhorse.skeleton")) {
                             spawnHorse(p, Variant.SKELETON_HORSE, true, false);
-                            notify(p);
                             return true;
                         } else if (args[0].equalsIgnoreCase("zombie") && p.hasPermission("darkhorse.zombie")) {
                             spawnHorse(p, Variant.UNDEAD_HORSE, true, false);
-                            notify(p);
                             return true;
                         } else {
                             return false;
@@ -134,23 +122,18 @@ public class DarkHorse extends JavaPlugin {
                     } else if (args[1].equalsIgnoreCase("chest")) {
                         if (args[0].equalsIgnoreCase("horse") && p.hasPermission("darkhorse.horse")) {
                             spawnHorse(p, Variant.HORSE, false, true);
-                            notify(p);
                             return true;
                         } else if (args[0].equalsIgnoreCase("donkey") && p.hasPermission("darkhorse.donkey")) {
                             spawnHorse(p, Variant.DONKEY, false, true);
-                            notify(p);
                             return true;
                         } else if (args[0].equalsIgnoreCase("mule") && p.hasPermission("darkhorse.mule")) {
                             spawnHorse(p, Variant.MULE, false, true);
-                            notify(p);
                             return true;
                         } else if (args[0].equalsIgnoreCase("skeleton") && p.hasPermission("darkhorse.skeleton")) {
                             spawnHorse(p, Variant.SKELETON_HORSE, false, true);
-                            notify(p);
                             return true;
                         } else if (args[0].equalsIgnoreCase("zombie") && p.hasPermission("darkhorse.zombie")) {
                             spawnHorse(p, Variant.UNDEAD_HORSE, false, true);
-                            notify(p);
                             return true;
                         } else {
                             return false;
@@ -159,23 +142,18 @@ public class DarkHorse extends JavaPlugin {
                 } else if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("horse") && p.hasPermission("darkhorse.horse")) {
                         spawnHorse(p, Variant.HORSE, false, false);
-                        notify(p);
                         return true;
                     } else if (args[0].equalsIgnoreCase("donkey") && p.hasPermission("darkhorse.donkey")) {
                         spawnHorse(p, Variant.DONKEY, false, false);
-                        notify(p);
                         return true;
                     } else if (args[0].equalsIgnoreCase("mule") && p.hasPermission("darkhorse.mule")) {
                         spawnHorse(p, Variant.MULE, false, false);
-                        notify(p);
                         return true;
                     } else if (args[0].equalsIgnoreCase("skeleton") && p.hasPermission("darkhorse.skeleton")) {
                         spawnHorse(p, Variant.SKELETON_HORSE, false, false);
-                        notify(p);
                         return true;
                     } else if (args[0].equalsIgnoreCase("zombie") && p.hasPermission("darkhorse.zombie")) {
                         spawnHorse(p, Variant.UNDEAD_HORSE, false, false);
-                        notify(p);
                         return true;
                     } else {
                         return false;
@@ -197,5 +175,10 @@ public class DarkHorse extends JavaPlugin {
         if (chest) {
             horse.setCarryingChest(true);
         }
+        notify(player);
+    }
+
+    private void notify(Player player) {
+        player.sendMessage(ChatColor.GOLD + "Say hello to your new friend!");
     }
 }
