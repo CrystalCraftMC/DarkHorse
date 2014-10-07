@@ -38,7 +38,7 @@ public class DarkHorse extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("DarkHorse v1.2.3 has been enabled!");
+        getLogger().info("DarkHorse v1.3 has been enabled!");
 
         // Link plugin with metrics.
         try {
@@ -61,7 +61,7 @@ public class DarkHorse extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("DarkHorse v1.2.2 has been disabled!");
+        getLogger().info("DarkHorse v1.3 has been disabled!");
     }
 
     private void notify(Player player) {
