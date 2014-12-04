@@ -64,10 +64,6 @@ public class DarkHorse extends JavaPlugin {
         getLogger().info("DarkHorse v1.3 has been disabled!");
     }
 
-    private void notify(Player player) {
-        player.sendMessage(ChatColor.GOLD + "Say hello to your new friend!");
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("dh")) {
@@ -184,6 +180,10 @@ public class DarkHorse extends JavaPlugin {
             }
         }
         return false;
+    }
+
+    private void notify(Player player) {
+        player.sendMessage(ChatColor.GOLD + "Say hello to your new friend!");
     }
 
     private void spawnHorse(Player player, Variant variant, boolean tamed, boolean chest) {
