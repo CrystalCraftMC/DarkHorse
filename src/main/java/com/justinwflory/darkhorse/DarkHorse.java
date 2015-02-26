@@ -25,21 +25,11 @@ import org.bukkit.entity.Horse.Variant;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
-
 public class DarkHorse extends JavaPlugin {
 
     @Override
     public void onEnable() {
         getLogger().info("DarkHorse v1.3 has been enabled!");
-
-        // Link plugin with metrics.
-        try {
-            Metrics metrics = new Metrics(this);
-            metrics.start();
-        } catch (IOException e) {
-            // Failed to submit the stats :-(
-        }
 
         // Generate the config.yml file and load defaults.
         saveDefaultConfig();
