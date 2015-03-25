@@ -25,6 +25,12 @@ import org.bukkit.entity.Horse.Variant;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * This plugin allows a user to spawn in any variety of horse available within a vanilla Minecraft client. This
+ * includes some of the more exclusive horses such as skeleton and zombie horses.
+ *
+ * @author Justin W. Flory
+ */
 public class DarkHorse extends JavaPlugin {
 
     @Override
