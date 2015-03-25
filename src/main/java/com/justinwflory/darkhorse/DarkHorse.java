@@ -25,6 +25,8 @@ import org.bukkit.entity.Horse.Variant;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.IOException;
+
 /**
  * This plugin allows a user to spawn in any variety of horse available within a vanilla Minecraft client. This
  * includes some of the more exclusive horses such as skeleton and zombie horses.
@@ -35,12 +37,19 @@ public class DarkHorse extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("DarkHorse v1.3 has been enabled!");
+        getLogger().info("DarkHorse has been enabled!");
 
         // Generate the config.yml file and load defaults.
         saveDefaultConfig();
         getConfig().options().copyDefaults(true);
         saveConfig();
+
+        try {
+            MetricsLite metrics = new MetricsLite(this);
+            metrics.start();
+        } catch (IOException e) {
+            // Failed to submit the stats :-(
+        }
 
         if (getConfig().getBoolean("auto-update")) {
             @SuppressWarnings({ "unused" })
@@ -49,9 +58,7 @@ public class DarkHorse extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
-        getLogger().info("DarkHorse v1.3 has been disabled!");
-    }
+    public void onDisable() { getLogger().info("DarkHorse has been disabled!"); }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
