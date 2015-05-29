@@ -1,4 +1,4 @@
-DarkHorse
+DarkHorse [![Build Status](https://travis-ci.org/jflory7/DarkHorse.svg)](https://travis-ci.org/jflory7/DarkHorse)
 =========
 
 DarkHorse is a simple, lightweight plugin that lets you spawn all types
