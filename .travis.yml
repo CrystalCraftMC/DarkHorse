@@ -1,5 +1,8 @@
 language: java
 jdk:
-  - oraclejdk8
-  - oraclejdk7
-  - openjdk7
+- oraclejdk8
+- oraclejdk7
+- openjdk7
+notifications:
+  slack:
+    secure: QHZUnCLzT7pmMh2rODUIcESqQfkMn2tREDldcgOVCkSDdOhIv0kkE6vN04wOBhZm3mY2VfN/txXibHnP5P6+kGjQuk24Q4hhdyYKOUbvDrPCRCWa1Sso2iRW685qnkBpHTB0C4Rwd4zt/GL+WF60vs2gAWsBzsf9H/dVe1w/BrGkgNhOBFIEvgJdm4IOzbwWAgzr2941yOPPzgJQjLmS9CIfGNOKhn5QmHL2fgb0QtN3sTlbactJAOf23eRlTEoxfe5DVdXyinCtf/SBMr19oyiIsWgsXDjxccUaPi3zoK01QQMAdxdhBX35mqe1CehsfjZec+/wyhJ0DJj5ci2VHP6eCZepBm98Be37VchVzf1ySm0pcAhSbmkPZqFqeOE/mmcxjamvMUsTDM53lHpTxAuM+NC0JzFtublBj0mxChGuVtz/I1PzVP9zP/FM9ac8aEDMIiuN6FxoWFoDNHAYVQfBdvPUQAx7FWjxbF/WZQa11kUH1G/xtlIOL/WqbxsnPZU73hekRze2pRbemvQlXz75AWZc6VsPNlmqbsdy7N5UNoT7IY/rRMCIXRjkHr8A3cWjx9gjko/JvnH05l5zbozYvegV3QmZFDmgBSfIDYAuVIfp43d3cvOhTfgc0VZW9dLqz2WOS+fYyQ7uwSbCFEpPWaLA+PMpEdxjGLGHcr4=
